@@ -2,39 +2,101 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#050B14"
-    android:padding="24dp">
+    android:background="#0A0E17"
+    android:padding="16dp">
 
-    <TextView
-        android:id="@+id/titleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="E.D.I.T.H. // MASHA CORE"
-        android:textColor="#00E5FF"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:letterSpacing="0.1" />
-
-    <TextView
-        android:id="@+id/statusText"
+    <!-- Header Status -->
+    <LinearLayout
+        android:id="@+id/headerLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/titleText"
-        android:layout_marginTop="30dp"
-        android:text="System Initialized. Awaiting command, Sir."
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:lineSpacingExtra="4dp" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="12dp">
 
-    <Button
-        android:id="@+id/btnMic"
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="M.A.S.H.A // CORE v1.0"
+            android:textColor="#00E5FF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.08" />
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="● READY"
+            android:textColor="#00FF88"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Chat History View -->
+    <ScrollView
+        android:id="@+id/chatScrollView"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="match_parent"
+        android:layout_below="@id/headerLayout"
+        android:layout_above="@+id/bottomInputLayout"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/chatContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" />
+    </ScrollView>
+
+    <!-- Bottom Input & Controls -->
+    <LinearLayout
+        android:id="@+id/bottomInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="ENGAGE TACTICAL LINK"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        android:backgroundTint="#00E5FF"
-        android:textSize="16sp" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingTop="8dp">
+
+        <EditText
+            android:id="@+id/etMessage"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="#151D2A"
+            android:hint="Talk or ask Masha..."
+            android:textColorHint="#5A6E85"
+            android:textColor="#E0E6ED"
+            android:textSize="14sp"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:singleLine="true" />
+
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="60dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="6dp"
+            android:backgroundTint="#00E5FF"
+            android:text="➔"
+            android:textColor="#0A0E17"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnMic"
+            android:layout_width="60dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="6dp"
+            android:backgroundTint="#1F2E45"
+            android:text="🎙"
+            android:textColor="#00E5FF"
+            android:textSize="16sp" />
+    </LinearLayout>
 
 </RelativeLayout>
