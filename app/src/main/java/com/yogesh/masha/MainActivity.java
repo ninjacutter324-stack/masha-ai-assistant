@@ -1,4 +1,4 @@
-package com.masha.assistant;
+package com.yogesh.masha;
 
 import android.Manifest;
 import android.content.Context;
@@ -89,8 +89,8 @@ public class MainActivity extends AppCompatActivity {
 
         btnMic.setOnClickListener(v -> startVoiceListening());
 
-        // Startup: silent bubble (no auto audio blast)
-        addMessageBubble("Masha", "Hey Yogesh! Main online hoon. Aaj kya plan hai? Bolo ya type karo, I'm all ears! ✨", false);
+        // Startup: clean greeting bubble
+        addMessageBubble("Masha", "Hey Yogesh! Main online hoon. Aaj kya plan hai? Bolo ya type karo! ✨", false);
     }
 
     private void requestAppPermissions() {
@@ -152,17 +152,17 @@ public class MainActivity extends AppCompatActivity {
     private void handleUserQuery(String query) {
         addMessageBubble("You", query, true);
 
-        // Flashlight command logic
+        // Flashlight toggle
         String q = query.toLowerCase();
         if (q.contains("torch on") || q.contains("flashlight on") || q.contains("light on") || q.contains("torch chalu")) {
             toggleTorch(true);
-            String reply = "Flashlight chalu kar di hai, sir! Aur kuch? 💡";
+            String reply = "Flashlight chalu kar di hai, sir! 💡";
             addMessageBubble("Masha", reply, false);
             speak(reply);
             return;
         } else if (q.contains("torch off") || q.contains("flashlight off") || q.contains("light off") || q.contains("torch band")) {
             toggleTorch(false);
-            String reply = "Flashlight band kar di! Aur batao? ✨";
+            String reply = "Flashlight band kar di! ✨";
             addMessageBubble("Masha", reply, false);
             speak(reply);
             return;
@@ -248,7 +248,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onFailure(Call call, IOException e) {
                     new Handler(Looper.getMainLooper()).post(() -> {
                         tvStatus.setText("● ERROR");
-                        addMessageBubble("Masha", "Arre network issue lag raha hai, ek baar check karo na!", false);
+                        addMessageBubble("Masha", "Network issue lag raha hai, ek baar internet check karo na!", false);
                     });
                 }
 
